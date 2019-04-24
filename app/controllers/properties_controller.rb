@@ -10,10 +10,11 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    if Property.create(property_params)
+    @property = Property.new(property_params)
+    if @property.save
       redirect_to properties_path
     else
-      render "new"
+      redirect_to properties_path
     end
   end
 
@@ -21,13 +22,14 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    1.times { @property.stations.build }
   end
 
   def update
     if @property.update(property_params)
       redirect_to properties_path
     else
-      render "edit"
+      redirect_to edit_property_path
     end
   end
 

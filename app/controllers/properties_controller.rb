@@ -14,7 +14,8 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to properties_path
     else
-      redirect_to properties_path
+      flash.now[:notice] = "未入力の項目があります"
+      render :new
     end
   end
 
@@ -29,7 +30,7 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       redirect_to properties_path
     else
-      redirect_to edit_property_path
+      redirect_to edit_property_path,notice:"未入力の項目があります"
     end
   end
 

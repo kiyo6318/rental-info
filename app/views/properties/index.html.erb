@@ -10,9 +10,9 @@
   <% @properties.each do |property| %>
     <tr>
       <td><%= property.name %></td>
-      <td><%= property.price %>円</td>
+      <td><%= property.price.to_s(:delimited) %>円</td>
       <td><%= property.address %></td>
-      <td><%= property.age %></td>
+      <td><%= property.age %>年</td>
       <td><%= property.remarks %></td>
       <td><%= link_to "詳細",property_path(property.id) %></td>
       <td><%= link_to "編集",edit_property_path(property.id) %></td>
